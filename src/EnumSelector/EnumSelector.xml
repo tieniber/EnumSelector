@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="EnumSelector.widget.EnumSelector" needsEntityContext="true" xmlns="http://www.mendix.com/widget/1.0/">
+    <name>EnumSelector</name>
+    <description>The description of this widget.</description>
+
+    <icon />
+
+    <properties>
+        <property key="enumAttribute" type="attribute">
+            <caption>Enum attribute</caption>
+            <category>Main</category>
+            <description>The enumeration attribute</description>
+            <attributeTypes>
+                <attributeType name="Enum" />
+                <attributeType name="String"/>
+            </attributeTypes>
+        </property>
+        <property key="enumOptions" type="object" isList="true" required="true">
+            <caption>Display enum values</caption>
+            <category>Main</category>
+            <description>The enum options you would like to display </description>
+            <properties>
+                <property key="enumCaption" type="string" required="true">
+                    <caption>Caption</caption>
+                    <category>Enum options</category>
+                    <description>The caption you would like to display</description>
+                </property>
+                <property key="enumKey" type="string" required="true">
+                    <caption>Value</caption>
+                    <category>Enum options</category>
+                    <description>The attribute value to map the result to</description>
+                </property>
+            </properties>
+        </property>
+        <property key="showLabel" type="boolean" defaultValue="false">
+            <caption>Show label</caption>
+            <category>Label</category>
+            <description>Show a label</description>
+        </property>
+        <property key="labelDirection" type="enumeration" defaultValue="Horizontal">
+            <caption>Label orientation</caption>
+            <category>Label</category>
+            <description>Orientation of the label</description>
+            <enumerationValues>
+                <enumerationValue key="Horizontal">Horizontal</enumerationValue>
+                <enumerationValue key="Vertical">Vertical</enumerationValue>
+            </enumerationValues>
+        </property>
+        <property key="label" type="translatableString">
+            <caption>Label caption</caption>
+            <category>Label</category>
+            <description>Label caption</description>
+        </property>
+        <property key="onChangeMF" type="microflow" required="false">
+            <caption>On change</caption>
+            <category>Main</category>
+            <description>On change microflow</description>
+            <returnType type="Void" />
+        </property>
+    </properties>
+</widget>
+
