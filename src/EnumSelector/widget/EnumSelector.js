@@ -136,13 +136,15 @@ define([
 
         // Adds validation
         _handleValidation: function (validations) {
-            var message = validations[0]
-                .getReasonByAttribute(this.enumAttribute);
+            var validation = validations[0];
+            var message = validation.getReasonByAttribute(this.enumAttribute);
+            validation.removeAttribute(this.enumAttribute);
             if (message) {
                 this._showError(message);
             } else {
                 this._removeError();
             }
+
         },
 
         // Constructs the validation message
