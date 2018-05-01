@@ -6,6 +6,11 @@
     <icon />
 
     <properties>
+        <property key="emptyCaption" type="translatableString" required="false">
+            <caption>Empty option caption</caption>
+            <category>Main</category>
+            <description>Caption for empty option</description>
+        </property>
         <property key="enumAttribute" type="attribute">
             <caption>Enum attribute</caption>
             <category>Main</category>

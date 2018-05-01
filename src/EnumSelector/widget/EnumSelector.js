@@ -43,6 +43,7 @@ define([
         // Parameters configured in the Modeler.
         enumAttribute: "",
         enumOptions: "",
+        emptyCaption: "",
 
         // Internal variables. Non-primitives created in the prototype are
         // shared between all widget instances.
@@ -178,7 +179,7 @@ define([
         // This function adds the <option> elements to the dropdown,
         // first for the empty value and then for the selected values
         _addOptions: function () {
-            this._addSingleOption("", "");
+            this._addSingleOption( this.emptyCaption, "");
             for (var i = 0; i < this.enumOptions.length; i++) {
                 this._addSingleOption(this.enumOptions[i].enumCaption,
                         this.enumOptions[i].enumKey);
