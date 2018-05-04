@@ -84,9 +84,19 @@ define([
             this._resetValue();
             this._resetSubscriptions();
             this._setupEvents();
+            this._setEnabledDisabled();
             this._executeCallback(callback);
         },
 
+        _setEnabledDisabled: function() {
+            if (!this.get("disabled") 
+                && this._contextObj
+                && !this._contextObj.isReadonlyAttr(this.enumAttribute)) {
+                this.inputNode.removeAttribute("disabled");
+            } else {
+                this.inputNode.setAttribute("disabled","");
+            }
+        },
 
         _unsubscribe: function () {
           if (this._handles) {
