@@ -44,6 +44,8 @@ define([
         enumAttribute: "",
         enumOptions: "",
         emptyCaption: "",
+        hideEmptyOption: false,
+        labelColumnWidth: 3,
 
         // Internal variables. Non-primitives created in the prototype are
         // shared between all widget instances.
@@ -102,7 +104,7 @@ define([
           if (this._handles) {
               dojoArray.forEach(this._handles, function (handle) {
                   this.unsubscribe(handle);
-              });
+              }, this );
               this._handles = [];
           }
         },
@@ -189,7 +191,9 @@ define([
         // This function adds the <option> elements to the dropdown,
         // first for the empty value and then for the selected values
         _addOptions: function () {
-            this._addSingleOption( this.emptyCaption, "");
+            if ( ! this.hideEmptyOption ) {
+                this._addSingleOption( this.emptyCaption, "");
+            }
             for (var i = 0; i < this.enumOptions.length; i++) {
                 this._addSingleOption(this.enumOptions[i].enumCaption,
                         this.enumOptions[i].enumKey);
@@ -208,15 +212,19 @@ define([
         _addLabel: function() {
             if (this.showLabel === false) { return; }
 
+            var labelColWidth  = this.labelColumnWidth || 3;
+            var labelColClass = "col-sm-"+labelColWidth;
+            var inputColWidth = 12 - labelColWidth;
+            var inputColClass = "col-sm-"+inputColWidth;
             dojoConstruct.create("label", {
                     "class": (this.labelDirection === "Vertical") ?
-                        "control-label" : "control-label col-sm-3",
+                        "control-label" : "control-label "+labelColClass,
                     "innerHTML": this.label
                 }, this.widgetNode);
 
             this._labelContainer = dojoConstruct.create("div", {
                     "class": (this.labelDirection === "Vertical") ?
-                        "" : "col-sm-9",
+                        "" : inputColClass,
                 }, this.widgetNode);
             this._labelContainer.appendChild(this.inputNode);
 

@@ -11,6 +11,11 @@
             <category>Main</category>
             <description>Caption for empty option</description>
         </property>
+        <property key="hideEmptyOption" type="boolean" defaultValue="false">
+            <caption>Hide empty option</caption>
+            <category>Main</category>
+            <description>Do not show an empty option</description>
+        </property>
         <property key="enumAttribute" type="attribute">
             <caption>Enum attribute</caption>
             <category>Main</category>
@@ -50,6 +55,11 @@
                 <enumerationValue key="Horizontal">Horizontal</enumerationValue>
                 <enumerationValue key="Vertical">Vertical</enumerationValue>
             </enumerationValues>
+        </property>
+        <property key="labelColumnWidth" type="integer" defaultValue="3">
+            <caption>Label column width</caption>
+            <category>Label</category>
+            <description>Width of label column</description>
         </property>
         <property key="label" type="translatableString">
             <caption>Label caption</caption>
