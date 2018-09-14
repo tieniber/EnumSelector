@@ -136,12 +136,16 @@ define([
 
         // Updates the dropdown to reflect the attribute value
         _resetValue: function() {
-            var enumValue = this._contextObj.get(this.enumAttribute);        
-            var key = this.enumOptions.find( function(obj) {
-                    return obj.enumKey === enumValue;
-                });
-            if (key && key !== "") {
-                this.inputNode.value = key.enumKey;
+            if ( this._contextObj ) {
+                var enumValue = this._contextObj.get(this.enumAttribute);        
+                var key = this.enumOptions.find( function(obj) {
+                        return obj.enumKey === enumValue;
+                    });
+                if (key && key !== "") {
+                    this.inputNode.value = key.enumKey;
+                } else {
+                    this.inputNode.value = "";
+                }
             } else {
                 this.inputNode.value = "";
             }
@@ -242,10 +246,12 @@ define([
         // is selected kick it off
         _setAttributeValue: function (event) {
             this._removeError();
-            var key = event.target.value;
-            this._contextObj.set(this.enumAttribute, key);
-            if (this.onChangeMF) {
-                this._executeMicroflow(this.onChangeMF);
+            if ( this._contextObj ) {
+                var key = event.target.value;
+                this._contextObj.set(this.enumAttribute, key);
+                if (this.onChangeMF) {
+                    this._executeMicroflow(this.onChangeMF);
+                }
             }
         },
 
@@ -259,13 +265,17 @@ define([
 
         // Execute microflow action
         _executeMicroflow: function (microflowName) {
-            mx.ui.action(microflowName, {
-                params: {
-                    applyto: "selection",
-                    guids: [this._contextObj.getGuid()]
-                },
-                scope: this.mxform,
-            }, this);
+            if ( this._contextObj ) {
+                mx.ui.action(microflowName, {
+                    params: {
+                        applyto: "selection",
+                        guids: [this._contextObj.getGuid()]
+                    },
+                    scope: this.mxform,
+                }, this);
+            } else {
+                logger.warning(this.id +"._executeMicroflow with empty contextObj");
+            }
         }
     });
 });
