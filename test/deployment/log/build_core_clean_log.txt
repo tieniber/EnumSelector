@@ -1,9 +1,0 @@
-Buildfile: C:\Users\recktenwaldf\GitHub\AttributeImage\test\deployment\build_core.xml
-
-clean:
-
-BUILD SUCCESSFUL
-Total time: 0 seconds
-
-
-

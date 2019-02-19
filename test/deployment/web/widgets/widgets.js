@@ -1,1 +1,0 @@
-﻿define(["AttributeImage/widget/AttributeImage"], {});
