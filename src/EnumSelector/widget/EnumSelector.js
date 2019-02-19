@@ -4,9 +4,11 @@
     ========================
 
     @file      : EnumSelector.js
-    @version   : 0.0.1
+    @version   : 1.2.0
     @author    : Robbert Hagendoorn
     @date      : Fri, 10 Mar 2017 17:39:13 GMT
+    @modifiedby: Eric Tieniber
+    @modified  : Mon, 18 Feb 2019
     @copyright :
     @license   :
 
@@ -91,12 +93,10 @@ define([
         },
 
         _setEnabledDisabled: function() {
-            if (!this.get("disabled") 
-                && this._contextObj
-                && !this._contextObj.isReadonlyAttr(this.enumAttribute)) {
-                this.inputNode.removeAttribute("disabled");
-            } else {
+            if (this.readOnly || this.get("disabled") || this.readonly || !this._contextObj || this._contextObj.isReadonlyAttr(this.enumAttribute)) {
                 this.inputNode.setAttribute("disabled","");
+            } else {
+                this.inputNode.removeAttribute("disabled");
             }
         },
 
